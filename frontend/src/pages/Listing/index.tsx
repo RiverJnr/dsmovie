@@ -1,6 +1,9 @@
+import Pagination from "components/Pagination";
+import './styles.css';
+
 function Listining() {
     return (
-        <h1>Página de listagem</h1>
+        <Pagination/>
     );
 }
 
