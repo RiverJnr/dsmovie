@@ -3,13 +3,23 @@ import MovieCard from "components/MovieCard";
 import './styles.css';
 import axios from "axios";
 import { BASE_URL } from "utils/requests";
+import { useEffect, useState } from "react";
+import { MoviePage } from "types/movie";
 
 function Listining() {
+
+    const [pageNumber, setPageNumber] = useState(0);
     
-    axios.get(`${BASE_URL}/movies/2`)
-         .then(response => {
-             console.log(response.data);
-         });
+    useEffect(() => {
+        axios.get(`${BASE_URL}/movies?size=12&page=5`)
+            .then(response => {
+                const data = response.data as MoviePage;
+                console.log(data);
+                setPageNumber(data.number);
+            });
+    }, []);
+
+
 
     return (
         <>
